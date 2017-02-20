@@ -1,0 +1,13 @@
+flags: {}
+extra-package-dbs: []
+packages:
+- '.'
+- location:
+    git: https://github.com/elm-lang/elm-compiler
+    commit: eb97f2a5dd5421c708a91b71442e69d02453cc80
+extra-deps:
+- aeson-pretty-0.7.2
+- binary-0.7.6.1
+- concatenative-1.0.1
+- indents-0.3.3
+resolver: lts-8.1

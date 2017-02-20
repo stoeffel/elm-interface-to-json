@@ -1,0 +1,37 @@
+name:                elm-interface-to-json
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/githubuser/elm-interface-to-json#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2017 Author name here
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+executable elm-interface-to-json
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  other-modules:       InterfaceDecoder,
+                       OptionParser
+  build-depends:       base >= 4.7 && < 5,
+                       elm-compiler == 0.18,
+                       aeson == 1.0.2.1,
+                       aeson-pretty == 0.7.2,
+                       binary == 0.7.6.1,
+                       concatenative == 1.0.1,
+                       indents == 0.3.3,
+                       text == 1.2.2.1,
+                       filepath == 1.4.1.1,
+                       bytestring == 0.10.8.1,
+                       directory == 1.3.0.0,
+                       optparse-applicative == 0.13.1.0,
+                       parsec ==  3.1.11,
+                       filemanip == 0.3.6.3,
+                       binary == 0.7.6.1,
+                       containers == 0.5.7.1
