@@ -1,6 +1,7 @@
 elm-interface-to-json
 =====================
 
+> Reads all elm files of a project and returns a list of modules with there functions.
 
 Installation
 ------------
