@@ -10,7 +10,7 @@ import Options.Applicative.Builder()
 import Data.Text()
 
 
-data Opts = Opts
+newtype Opts = Opts
   { packagePath :: Maybe FilePath
   }
 
@@ -31,6 +31,7 @@ parser =
     pathReadM :: String -> Maybe (Maybe FilePath)
     pathReadM "" = Just Nothing
     pathReadM str = Just $ Just str
+
 
 opts :: ParserInfo Opts
 opts = info (helper <*> parser) fullDesc

@@ -1,7 +1,7 @@
 {-# OPTIONS_GHC -Wall #-}
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE OverloadedStrings #-}
-module InterfaceDecoder (decode, toJson) where
+module InterfaceDecoder (decode, toJson, Module(..)) where
 
 
 import GHC.Generics (Generic)
