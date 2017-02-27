@@ -2,14 +2,17 @@
 module ElmPackageInfo (Project(..), info) where
 
 
+import Control.Monad.Trans.Class (lift)
+import Control.Monad.Trans.Either (EitherT, left)
 import Data.Aeson as Aeson
 import Data.Maybe as Maybe
+import Errors (Error(..))
 import GHC.Generics (Generic)
+import System.Directory (doesFileExist)
 import System.FilePath ((</>))
 import qualified Data.ByteString.Lazy as BL
 import qualified Data.Text as T
 import qualified Text.Parsec as P
-import qualified System.Exit as Exit
 
 
 data Project = Project
@@ -29,13 +32,22 @@ instance ToJSON ElmPackage
 instance FromJSON ElmPackage
 
 
-info :: FilePath -> IO Project
+info :: FilePath -> EitherT Error IO Project
 info root = do
-  elmPackage <- BL.readFile (root </> "elm-package.json")
-  let Just (ElmPackage version' repository') = Aeson.decode elmPackage
+  let elmPackagePath = (root </> "elm-package.json")
+  elmPackageExists <- lift $ doesFileExist elmPackagePath
+  _ <-
+    case elmPackageExists of
+      True -> lift $ return ()
+      False -> left $ ElmPackageNotFound (T.pack elmPackagePath)
+  elmPackage <- lift $ BL.readFile elmPackagePath
+  ElmPackage version' repository' <-
+    case Aeson.decode elmPackage of
+      Nothing -> left ElmPackageInvalid
+      Just j -> return j
   case extractProject repository' of
     Right (user, repo) -> return $ Project version' user repo
-    Left _ -> Exit.die "Not a valid repository"
+    Left _ -> left ElmPackageInvalid
 
 
 extractProject :: T.Text -> Either P.ParseError (T.Text, T.Text)

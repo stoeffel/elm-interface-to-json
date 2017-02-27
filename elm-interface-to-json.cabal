@@ -18,7 +18,9 @@ executable elm-interface-to-json
   main-is:             Main.hs
   default-language:    Haskell2010
   other-modules:       InterfaceDecoder,
-                       OptionParser
+                       OptionParser,
+                       Errors,
+                       ElmPackageInfo
   build-depends:       base >= 4.7 && < 5,
                        elm-compiler == 0.18,
                        aeson == 1.0.2.1,
@@ -34,4 +36,6 @@ executable elm-interface-to-json
                        parsec ==  3.1.11,
                        filemanip == 0.3.6.3,
                        binary == 0.7.6.1,
-                       containers == 0.5.7.1
+                       containers == 0.5.7.1,
+                       transformers == 0.5.2.0,
+                       either == 4.4.1.1
