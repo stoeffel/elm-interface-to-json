@@ -1,0 +1,33 @@
+{
+  "name": "elm-interface-to-json",
+  "version": "0.0.1",
+  "description": "Reads all elm files of a project and returns a list of modules with there functions.",
+  "main": "index.js",
+  "directories": {
+    "test": "test",
+    "bin": "binaries"
+  },
+  "bin": {
+    "elm-interface-to-json": "binaries/elm-interface-to-json"
+  },
+  "scripts": {
+    "install": "node install.js"
+  },
+  "files": [
+    "install.js",
+    "binaries"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stoeffel/elm-interface-to-json.git"
+  },
+  "author": "schtoeffel",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/stoeffel/elm-interface-to-json/issues"
+  },
+  "homepage": "https://github.com/stoeffel/elm-interface-to-json#readme",
+  "dependencies": {
+    "binstall": "^1.2.0"
+  }
+}
