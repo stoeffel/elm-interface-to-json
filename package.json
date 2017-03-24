@@ -1,6 +1,6 @@
 {
   "name": "elm-interface-to-json",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Reads all elm files of a project and returns a list of modules with there functions.",
   "main": "index.js",
   "directories": {
