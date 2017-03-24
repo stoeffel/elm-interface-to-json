@@ -19,7 +19,7 @@ var executablePaths = Object.keys(packageInfo.bin).map(function(executable) {
   return path.join(binariesDir, executable + binaryExtension);
 });
 
-binstall(url, {path: binariesDir, strip: 1}, {verbose: true, verify: executablePaths})
+binstall(url, {path: binariesDir, strip: 0}, {verbose: true, verify: executablePaths})
   .then(function(successMessage) {
     console.log(successMessage);
   }, function(errorMessage) {
