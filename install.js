@@ -9,8 +9,8 @@ var arch = process.arch;
 var operatingSystem = process.platform;
 
 var filename = operatingSystem + "-" + arch + ".tar.gz";
-var version = "0.0.1";
-var url = "https://dl.bintray.com/elmlang/elm-interface-to-json/" + version + "/" + filename;
+var version = "0.18.3";
+var url = "https://dl.bintray.com/elmlang/elm-test/" + version + "/" + filename;
 
 var binariesDir = path.join(__dirname, "binaries");
 var packageInfo = require(path.join(__dirname, "package.json"));
