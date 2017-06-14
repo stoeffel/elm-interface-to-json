@@ -53,8 +53,4 @@ buildArtefactsPath root (Project version user repo) =
 
 
 findFiles :: FilePath -> IO [FilePath]
-findFiles = find (excludedDirs filePath) (filePath ~~? "**" </> "*.elmi")
-
-
-excludedDirs :: FindClause FilePath -> FindClause Bool
-excludedDirs path = path /~? "**" </> "*.elmo"
+findFiles = find (pure True) (extension ==? ".elmi")
