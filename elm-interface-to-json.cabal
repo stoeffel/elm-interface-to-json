@@ -37,5 +37,4 @@ executable elm-interface-to-json
                        filemanip == 0.3.6.3,
                        binary == 0.7.6.1,
                        containers == 0.5.7.1,
-                       transformers == 0.5.2.0,
-                       either == 4.4.1.1
+                       transformers == 0.5.2.0

@@ -3,7 +3,7 @@ module ElmPackageInfo (Project(..), info) where
 
 
 import Control.Monad.Trans.Class (lift)
-import Control.Monad.Trans.Either (EitherT, left)
+import Control.Monad.Trans.Except (ExceptT, throwE)
 import Data.Aeson as Aeson
 import Data.Maybe as Maybe
 import Errors (Error(..))
@@ -32,22 +32,22 @@ instance ToJSON ElmPackage
 instance FromJSON ElmPackage
 
 
-info :: FilePath -> EitherT Error IO Project
+info :: FilePath -> ExceptT Error IO Project
 info root = do
   let elmPackagePath = (root </> "elm-package.json")
   elmPackageExists <- lift $ doesFileExist elmPackagePath
   _ <-
     case elmPackageExists of
       True -> lift $ return ()
-      False -> left $ ElmPackageNotFound (T.pack elmPackagePath)
+      False ->  throwE . ElmPackageNotFound . T.pack $ elmPackagePath
   elmPackage <- lift $ BL.readFile elmPackagePath
   ElmPackage version' repository' <-
     case Aeson.decode elmPackage of
-      Nothing -> left ElmPackageInvalid
+      Nothing -> throwE ElmPackageInvalid
       Just j -> return j
   case extractProject repository' of
     Right (user, repo) -> return $ Project version' user repo
-    Left _ -> left ElmPackageInvalid
+    Left _ -> throwE ElmPackageInvalid
 
 
 extractProject :: T.Text -> Either P.ParseError (T.Text, T.Text)
