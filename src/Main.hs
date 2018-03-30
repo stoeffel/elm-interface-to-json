@@ -6,7 +6,7 @@ module Main where
 
 import Control.Applicative
 import Control.Monad.Trans.Class (lift)
-import Control.Monad.Trans.Either (EitherT, runEitherT)
+import Control.Monad.Trans.Except (runExceptT)
 import Data.Aeson as Aeson
 import Data.Maybe as Maybe
 import Data.Maybe()
@@ -26,7 +26,7 @@ import qualified System.Exit as Exit
 
 main :: IO ()
 main = do
-  e <- runEitherT $ do
+  e <- runExceptT $ do
     Opts maybeRoot <- lift parseOpts
     cwd <- lift Dir.getCurrentDirectory
     let root = Maybe.maybe "." ((</>) cwd) maybeRoot
