@@ -8,14 +8,15 @@
     "bin": "binaries"
   },
   "bin": {
-    "elm-interface-to-json": "binaries/elm-interface-to-json"
+    "elm-interface-to-json": "bin/elm-interface-to-json"
   },
   "scripts": {
     "install": "node install.js"
   },
   "files": [
     "install.js",
-    "binaries"
+    "bin",
+    "bin/elm-interface-to-json"
   ],
   "repository": {
     "type": "git",
