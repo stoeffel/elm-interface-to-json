@@ -8,14 +8,19 @@
     "bin": "binaries"
   },
   "bin": {
-    "elm-interface-to-json": "binaries/elm-interface-to-json"
+    "elm-interface-to-json": "bin/elm-interface-to-json"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   },
   "scripts": {
-    "install": "node install.js"
+    "install": "binwrap-install",
+    "prepublishOnly": "binwrap-test"
   },
   "files": [
     "install.js",
-    "binaries"
+    "bin",
+    "bin/elm-interface-to-json"
   ],
   "repository": {
     "type": "git",
@@ -28,6 +33,6 @@
   },
   "homepage": "https://github.com/stoeffel/elm-interface-to-json#readme",
   "dependencies": {
-    "binstall": "^1.2.0"
+    "binwrap": "0.1.4"
   }
 }
