@@ -10,6 +10,9 @@
   "bin": {
     "elm-interface-to-json": "bin/elm-interface-to-json"
   },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "scripts": {
     "install": "node install.js"
   },
